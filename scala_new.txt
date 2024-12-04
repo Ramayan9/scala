@@ -1,0 +1,836 @@
+1.//Average of Two number
+import scala.io.StdIn
+
+object AverageCalculator {
+  def main(args: Array[String]): Unit = {
+    // Prompt the user for the first number
+    print("Enter the first number: ")
+    val num1 = StdIn.readDouble() // Read input as a Double
+
+    // Prompt the user for the second number
+    print("Enter the second number: ")
+    val num2 = StdIn.readDouble() // Read input as a Double
+
+    // Calculate the average
+    val average = (num1 + num2) / 2
+
+    // Print the result
+    println(s"The average of $num1 and $num2 is $average")
+  }
+}
+
+2.//Factorial of number
+ import scala.io.StdIn
+
+object FactorialCalculator {
+  def main(args: Array[String]): Unit = {
+    // Prompt the user for input
+    print("Enter a number to calculate its factorial: ")
+    val number = StdIn.readInt() // Read input as an integer
+
+    // Calculate factorial using a recursive function
+    def factorial(n: Int): BigInt = {
+      if (n <= 1) 1
+      else n * factorial(n - 1)
+    }
+
+    // Calculate and print the result
+    if (number < 0) {
+      println("Factorial is not defined for negative numbers.")
+    } else {
+      val result = factorial(number)
+      println(s"The factorial of $number is $result")
+    }
+  }
+}
+
+3.//reverce fo an number
+import scala.io.StdIn
+
+object ReverseNumber {
+  def main(args: Array[String]): Unit = {
+    // Prompt the user for input
+    print("Enter a number: ")
+    val number = StdIn.readInt() // Read the number as an integer
+
+    // Calculate the reverse of the number
+    val reverse = number.toString.reverse.toInt
+
+    // Display the result
+    println(s"The reverse of $number is $reverse")
+  }
+}
+
+4.//accept no to check it arm strong or not
+import scala.io.StdIn
+
+object ArmstrongNumberChecker {
+  def main(args: Array[String]): Unit = {
+    // Prompt the user for input
+    print("Enter a number: ")
+    val number = StdIn.readInt() // Read the number
+
+    // Function to check if a number is Armstrong
+    def isArmstrong(num: Int): Boolean = {
+      val digits = num.toString.map(_.asDigit) // Extract digits
+      val power = digits.length               // Number of digits
+      val sumOfPowers = digits.map(d => Math.pow(d, power)).sum
+      sumOfPowers == num                      // Compare sum of powers to the number
+    }
+
+    // Check and display the result
+    if (isArmstrong(number)) {
+      println(s"$number is an Armstrong number.")
+    } else {
+      println(s"$number is not an Armstrong number.")
+    }
+  }
+}
+
+5.//program to accept no display between divisible by 3 & 5
+import scala.io.StdIn
+
+object DivisibleByThreeAndFive {
+  def main(args: Array[String]): Unit = {
+    // Prompt the user for input
+    print("Enter a number: ")
+    val number = StdIn.readInt() // Read the number
+
+    // Find and display numbers divisible by both 3 and 5
+    val divisibleNumbers = (1 to number).filter(n => n % 3 == 0 && n % 5 == 0)
+
+    // Print the results
+    if (divisibleNumbers.isEmpty) {
+      println(s"No numbers between 1 and $number are divisible by both 3 and 5.")
+    } else {
+      println(s"Numbers between 1 and $number divisible by both 3 and 5: ${divisibleNumbers.mkString(", ")}")
+    }
+  }
+}
+
+6.//accept n number and store only perfect number in array
+import scala.io.StdIn
+
+object PerfectNumbers {
+  def main(args: Array[String]): Unit = {
+    // Function to check if a number is perfect
+    def isPerfect(num: Int): Boolean = {
+      if (num < 2) false
+      else {
+        val divisors = (1 until num).filter(num % _ == 0)
+        divisors.sum == num
+      }
+    }
+
+    // Prompt the user for the number of inputs
+    print("How many numbers do you want to enter? ")
+    val n = StdIn.readInt() // Number of inputs
+
+    // Read the numbers and filter perfect numbers
+    println(s"Enter $n numbers:")
+    val numbers = Array.fill(n)(StdIn.readInt()) // Input numbers
+    val perfectNumbers = numbers.filter(isPerfect) // Filter perfect numbers
+
+    // Display the result
+    if (perfectNumbers.isEmpty) {
+      println("No perfect numbers were entered.")
+    } else {
+      println(s"Perfect numbers: ${perfectNumbers.mkString(", ")}")
+    }
+  }
+}
+
+7.//comman element between two arry integer
+object CommonElements {
+  def main(args: Array[String]): Unit = {
+    // Define two arrays
+    val array1 = Array(1, 2, 3, 4, 5)
+    val array2 = Array(3, 4, 5, 6, 7)
+
+    // Find common elements
+    val commonElements = array1.intersect(array2)
+
+    // Display the result
+    if (commonElements.isEmpty) {
+      println("No common elements found.")
+    } else {
+      println(s"Common elements: ${commonElements.mkString(", ")}")
+    }
+  }
+}
+
+8.//intersect between two areray
+import scala.io.StdIn
+
+object ArrayIntersection {
+  def main(args: Array[String]): Unit = {
+    // Input first array
+    println("Enter elements of the first array, separated by spaces:")
+    val array1 = StdIn.readLine().split(" ").map(_.toInt)
+
+    // Input second array
+    println("Enter elements of the second array, separated by spaces:")
+    val array2 = StdIn.readLine().split(" ").map(_.toInt)
+
+    // Find intersection
+    val intersection = array1.intersect(array2)
+
+    // Display the result
+    if (intersection.isEmpty) {
+      println("No common elements found.")
+    } else {
+      println(s"Common elements: ${intersection.mkString(", ")}")
+    }
+  }
+}
+
+9.//transpose matrix
+object MatrixTranspose {
+  def main(args: Array[String]): Unit = {
+    // Input matrix dimensions
+    println("Enter the number of rows in the matrix:")
+    val rows = scala.io.StdIn.readInt()
+
+    println("Enter the number of columns in the matrix:")
+    val cols = scala.io.StdIn.readInt()
+
+    // Input matrix elements
+    println("Enter the elements of the matrix row by row (space separated):")
+    val matrix = Array.ofDim[Int](rows, cols)
+
+    for (i <- 0 until rows) {
+      val row = scala.io.StdIn.readLine().split(" ").map(_.toInt)
+      matrix(i) = row
+    }
+
+    // Transpose the matrix
+    val transposedMatrix = transposeMatrix(matrix)
+
+    // Display the original matrix
+    println("\nOriginal Matrix:")
+    printMatrix(matrix)
+
+    // Display the transposed matrix
+    println("\nTransposed Matrix:")
+    printMatrix(transposedMatrix)
+  }
+
+  // Function to transpose a matrix
+  def transposeMatrix(matrix: Array[Array[Int]]): Array[Array[Int]] = {
+    val rows = matrix.length
+    val cols = matrix(0).length
+    val transposed = Array.ofDim[Int](cols, rows)
+
+    for (i <- 0 until rows) {
+      for (j <- 0 until cols) {
+        transposed(j)(i) = matrix(i)(j)
+      }
+    }
+
+    transposed
+  }
+
+  // Function to print a matrix
+  def printMatrix(matrix: Array[Array[Int]]): Unit = {
+    for (row <- matrix) {
+      println(row.mkString(" "))
+    }
+  }
+}
+
+10//sum of matrix
+object MatrixSum {
+  def main(args: Array[String]): Unit = {
+    // Input matrix dimensions
+    println("Enter the number of rows in the matrices:")
+    val rows = scala.io.StdIn.readInt()
+
+    println("Enter the number of columns in the matrices:")
+    val cols = scala.io.StdIn.readInt()
+
+    // Input first matrix
+    println("Enter the elements of the first matrix row by row (space separated):")
+    val matrix1 = Array.ofDim[Int](rows, cols)
+    for (i <- 0 until rows) {
+      val row = scala.io.StdIn.readLine().split(" ").map(_.toInt)
+      matrix1(i) = row
+    }
+
+    // Input second matrix
+    println("Enter the elements of the second matrix row by row (space separated):")
+    val matrix2 = Array.ofDim[Int](rows, cols)
+    for (i <- 0 until rows) {
+      val row = scala.io.StdIn.readLine().split(" ").map(_.toInt)
+      matrix2(i) = row
+    }
+
+    // Sum of matrices
+    val sumMatrix = addMatrices(matrix1, matrix2)
+
+    // Display the matrices and their sum
+    println("\nFirst Matrix:")
+    printMatrix(matrix1)
+    println("\nSecond Matrix:")
+    printMatrix(matrix2)
+    println("\nSum of the Matrices:")
+    printMatrix(sumMatrix)
+  }
+
+  // Function to add two matrices
+  def addMatrices(matrix1: Array[Array[Int]], matrix2: Array[Array[Int]]): Array[Array[Int]] = {
+    val rows = matrix1.length
+    val cols = matrix1(0).length
+    val sum = Array.ofDim[Int](rows, cols)
+
+    for (i <- 0 until rows) {
+      for (j <- 0 until cols) {
+        sum(i)(j) = matrix1(i)(j) + matrix2(i)(j)
+      }
+    }
+
+    sum
+  }
+
+  // Function to print a matrix
+  def printMatrix(matrix: Array[Array[Int]]): Unit = {
+    for (row <- matrix) {
+      println(row.mkString(" "))
+    }
+  }
+}
+
+11.//function to convert decimal to binary
+object DecimalToBinary {
+  def main(args: Array[String]): Unit = {
+    // Input: Decimal number
+    println("Enter a decimal number:")
+    val decimal = scala.io.StdIn.readInt()
+
+    // Call the function to convert decimal to binary
+    val binary = decimalToBinary(decimal)
+
+    // Display the result
+    println(s"The binary representation of $decimal is: $binary")
+  }
+
+  // Function to convert decimal to binary
+  def decimalToBinary(decimal: Int): String = {
+    if (decimal == 0) "0"
+    else {
+      @scala.annotation.tailrec
+      def convert(n: Int, binary: String): String = {
+        if (n == 0) binary
+        else convert(n / 2, (n % 2) + binary)
+      }
+
+      convert(decimal, "")
+    }
+  }
+}
+
+12.//decimal to hexa
+object DecimalToHexadecimal {
+  def main(args: Array[String]): Unit = {
+    // Input: Decimal number
+    println("Enter a decimal number:")
+    val decimal = scala.io.StdIn.readInt()
+
+    // Call the function to convert decimal to hexadecimal
+    val hexadecimal = decimalToHex(decimal)
+
+    // Display the result
+    println(s"The hexadecimal representation of $decimal is: $hexadecimal")
+  }
+
+  // Function to convert decimal to hexadecimal
+  def decimalToHex(decimal: Int): String = {
+    if (decimal == 0) "0"
+    else {
+      @scala.annotation.tailrec
+      def convert(n: Int, hex: String): String = {
+        if (n == 0) hex
+        else {
+          val remainder = n % 16
+          val hexDigit = if (remainder < 10) remainder.toString else (remainder - 10 + 'A'.toInt).toChar.toString
+          convert(n / 16, hexDigit + hex)
+        }
+      }
+
+      convert(decimal, "")
+    }
+  }
+}
+
+13.//accept string and count and convert upper case to lower case
+import scala.io.StdIn
+
+object UpperToLower {
+  def main(args: Array[String]): Unit = {
+    // Accept string input from the user
+    println("Enter a string:")
+    val input = StdIn.readLine()
+
+    // Count uppercase characters
+    val uppercaseCount = input.count(_.isUpper)
+
+    // Convert the string to lowercase
+    val lowercaseString = input.toLowerCase
+
+    // Display the results
+    println(s"Original string: $input")
+    println(s"Number of uppercase characters: $uppercaseCount")
+    println(s"String in lowercase: $lowercaseString")
+  }
+}
+
+14//accept string and character display number of occurances if the character is number replace with star if character is alphabate replace it question mark an character is special symbol replace it @
+import scala.io.StdIn
+
+object CharacterReplacement {
+  def main(args: Array[String]): Unit = {
+    // Accept input string and character
+    println("Enter a string:")
+    val inputString = StdIn.readLine()
+
+    println("Enter a character to count its occurrences:")
+    val charToCount = StdIn.readChar()
+
+    // Count the occurrences of the given character
+    val occurrences = inputString.count(_ == charToCount)
+
+    // Replace characters based on the given conditions
+    val modifiedString = inputString.map {
+      case c if c.isDigit => '*'          // Replace digits with '*'
+      case c if c.isLetter => '?'         // Replace letters with '?'
+      case c if !c.isLetterOrDigit => '@' // Replace special symbols with '@'
+      case c => c                        // Keep other characters as is
+    }
+
+    // Display results
+    println(s"Occurrences of '$charToCount': $occurrences")
+    println(s"Modified string: $modifiedString")
+  }
+}
+
+15.//class account(accno,name,balance,minbalance) operation perform withdraw,deposite,view balance 
+class Account(val accno: Int, val name: String, var balance: Double, val minBalance: Double) {
+
+  // Method to deposit money into the account
+  def deposit(amount: Double): Unit = {
+    if (amount > 0) {
+      balance += amount
+      println(s"Deposited $$amount. New balance: $$balance")
+    } else {
+      println("Deposit amount should be positive.")
+    }
+  }
+
+  // Method to withdraw money from the account
+  def withdraw(amount: Double): Unit = {
+    if (amount > 0 && (balance - amount) >= minBalance) {
+      balance -= amount
+      println(s"Withdrew $$amount. New balance: $$balance")
+    } else if (amount <= 0) {
+      println("Withdrawal amount should be positive.")
+    } else {
+      println(s"Cannot withdraw $$amount. Minimum balance of $$minBalance required.")
+    }
+  }
+
+  // Method to view the current balance
+  def viewBalance(): Unit = {
+    println(s"Account balance: $$balance")
+  }
+}
+
+object AccountDemo {
+  def main(args: Array[String]): Unit = {
+    // Create an account instance
+    val account = new Account(12345, "John Doe", 1000.0, 100.0)
+
+    // Show initial balance
+    account.viewBalance()
+
+    // Deposit money
+    account.deposit(500.0)
+
+    // Withdraw money
+    account.withdraw(200.0)
+
+    // Attempt to withdraw more than the available balance
+    account.withdraw(1500.0)
+
+    // View the final balance
+    account.viewBalance()
+  }
+}
+
+16.//student and course
+import scala.collection.mutable.ListBuffer
+
+// Base class Person
+class Person(val id: Int, val name: String) {
+  def displayInfo(): Unit = {
+    println(s"ID: $id, Name: $name")
+  }
+}
+
+// Student class inherits from Person and overrides displayInfo
+class Student(id: Int, name: String, val courses: ListBuffer[String]) extends Person(id, name) {
+
+  // Override displayInfo to include courses
+  override def displayInfo(): Unit = {
+    super.displayInfo() // Calling the base class method
+    println(s"Courses enrolled: ${courses.mkString(", ")}")
+  }
+
+  // Method to add a course to the ListBuffer
+  def addCourse(course: String): Unit = {
+    courses += course
+    println(s"Course '$course' added to student ${name}'s list.")
+  }
+
+  // Method to remove a course from the ListBuffer
+  def removeCourse(course: String): Unit = {
+    if (courses.contains(course)) {
+      courses -= course
+      println(s"Course '$course' removed from student ${name}'s list.")
+    } else {
+      println(s"Course '$course' not found in student's list.")
+    }
+  }
+}
+
+object StudentDemo {
+  def main(args: Array[String]): Unit = {
+    // Create a ListBuffer for courses
+    val coursesList = ListBuffer("Math", "Science", "English")
+
+    // Create a student instance
+    val student = new Student(101, "John Doe", coursesList)
+
+    // Display student info with courses
+    student.displayInfo()
+
+    // Add a new course
+    student.addCourse("History")
+
+    // Remove a course
+    student.removeCourse("Science")
+
+    // Remove a course that's not enrolled
+    student.removeCourse("Art")
+
+    // Display updated student info
+    student.displayInfo()
+  }
+}
+
+17.//player batting greater than ,football greater than
+import scala.collection.mutable.ListBuffer
+
+// Base class for Player
+class Player(val pno: Int, val pname: String, val age: Int) {
+  
+  // Constructor to initialize player details
+  def displayInfo(): Unit = {
+    println(s"Player No: $pno, Name: $pname, Age: $age")
+  }
+}
+
+// CricketPlayer subclass extending Player
+class CricketPlayer(pno: Int, pname: String, age: Int, 
+                     val noOfInnings: Int, val battingAvg: Double, 
+                     val bowlingAvg: Double) 
+  extends Player(pno, pname, age) {
+  
+  // Method to display cricket player info
+  override def displayInfo(): Unit = {
+    super.displayInfo()
+    println(s"Innings Played: $noOfInnings, Batting Average: $battingAvg, Bowling Average: $bowlingAvg")
+  }
+
+  // Method to check if batting average is greater than a given value
+  def battingGreaterThan(value: Double): Boolean = {
+    battingAvg > value
+  }
+}
+
+// FootballPlayer subclass extending Player
+class FootballPlayer(pno: Int, pname: String, age: Int, 
+                      val noOfInnings: Int, val noOfGoals: Int) 
+  extends Player(pno, pname, age) {
+
+  // Method to display football player info
+  override def displayInfo(): Unit = {
+    super.displayInfo()
+    println(s"Innings Played: $noOfInnings, Goals Scored: $noOfGoals")
+  }
+
+  // Method to check if goals are greater than a given value
+  def goalsGreaterThan(value: Int): Boolean = {
+    noOfGoals > value
+  }
+}
+
+// Main object to demonstrate functionality
+object PlayerDemo {
+  def main(args: Array[String]): Unit = {
+    
+    // Creating CricketPlayer instance
+    val cricketPlayer = new CricketPlayer(1, "Sachin Tendulkar", 50, 200, 53.1, 44.5)
+    
+    // Creating FootballPlayer instance
+    val footballPlayer = new FootballPlayer(2, "Lionel Messi", 37, 800, 600)
+
+    // Display player information
+    println("Cricket Player Info:")
+    cricketPlayer.displayInfo()
+    
+    println("\nFootball Player Info:")
+    footballPlayer.displayInfo()
+
+    // Check if cricket player's batting average is greater than 50
+    println("\nIs cricket player's batting average greater than 50? " + cricketPlayer.battingGreaterThan(50))
+
+    // Check if football player's goals are greater than 500
+    println("\nIs football player's goals greater than 500? " + footballPlayer.goalsGreaterThan(500))
+  }
+}
+
+18.//shape
+import scala.io.StdIn._
+  
+abstract class Shape(dim1:Float,dim2:Float,dim3:Float)
+{
+
+    def area():Float
+    def perimeter():Float
+    def volume():Float
+    final val pi=3.142f
+
+}
+class Circle (dim1:Float) extends Shape(dim1,0.0f,0.0f)
+{
+    def area:Float= pi*dim1*dim1
+    def perimeter:Float=2*pi*dim1
+    def volume:Float=0.0f
+
+}
+class Rectangle(dim1:Float,dim2:Float) extends Shape(dim1,dim2,0.0f)
+{
+
+     def area:Float= (dim1*dim2)
+    def perimeter:Float=2*(dim2+dim1)
+    def volume:Float=0.0f
+
+}
+
+class Cone(dim1:Float,dim2:Float,dim3:Float) extends Shape(dim1,dim2,dim3)
+{
+     def area:Float=pi*dim1* (dim1*dim3)// πr(r+l)
+    def perimeter:Float=0.0f
+    def volume:Float=0.33f*pi*dim1*dim1*dim2//  =>1/3 pi r^2h   
+}
+
+object HelloWorld{
+    def main(Args:Array[String])
+    {
+        println("Enter radius of circle:")
+        var r=readFloat
+        var c= new Circle(r)
+        println("Area of circle:"+c.area())
+        println("perimeter of circle:"+c.perimeter())
+
+        println("Enter Lengeth(width),breadth(height) of rectnagle")
+
+        var rec=new Rectangle(readFloat,readFloat)
+          println("Area of Rectangle:"+rec.area())
+        println("perimeter of perimeter:"+rec.perimeter())
+
+        println("Enter radius ,Height,length of cone:")
+        var cone= new Cone(readFloat,readFloat,readFloat)
+        println("Aread of Cone:"+cone.area())
+        println("Vloume of cone is:"+cone.volume())
+        
+
+
+    }
+
+}
+
+19.//create trait resizable with method resize width,height and object  
+
+import scala.io.stdIn
+import scala.collection.mutable.ListBuffer
+// Resizable trait with a method resize
+trait Resizable {
+  def resize(width: Double, height: Double): Unit
+}
+
+// Drawable trait with a method draw
+trait Drawable {
+  def draw(totalArgs: Int): Unit
+}
+
+// Rectangle class extends both Resizable and Drawable traits
+class Rectangle(var width: Double, var height: Double) extends Resizable with Drawable {
+
+  // Implementing the resize method from Resizable trait
+  override def resize(width: Double, height: Double): Unit = {
+    this.width = width
+    this.height = height
+    println(s"Rectangle resized to width: $width, height: $height")
+  }
+
+  // Implementing the draw method from Drawable trait
+  override def draw(totalArgs: Int): Unit = {
+    println(s"Drawing a rectangle with $totalArgs arguments.")
+  }
+
+  // Method to display the rectangle's current dimensions
+  def display(): Unit = {
+    println(s"Rectangle dimensions - Width: $width, Height: $height")
+  }
+}
+
+// Main object to test the implementation
+object MainApp {
+  def main(args: Array[String]): Unit = {
+    // Create a new Rectangle instance
+    val rect = new Rectangle(5.0, 3.0)
+
+    // Display the initial rectangle dimensions
+    rect.display()
+
+    // Resize the rectangle
+    rect.resize(10.0, 7.0)
+
+    // Draw the rectangle with a total argument count (e.g., 2 for width and height)
+    rect.draw(2)
+
+    // Display the updated dimensions
+    rect.display()
+  }
+}
+
+20.//list
+object ListCreationDemo {
+  def main(args: Array[String]): Unit = {
+    
+    // 1. List Style (Literal syntax)
+    val listStyle = List(1, 2, 3, 4, 5)
+    println("List Style: " + listStyle)
+    
+    // 2. Java Style (Using List.apply)
+    val javaStyle = List.apply(1, 2, 3, 4, 5)
+    println("Java Style: " + javaStyle)
+    
+    // 3. Range Method (Creating a List from a Range)
+    val rangeStyle = (1 to 5).toList  // Creates a range and converts it to a List
+    println("Range Style: " + rangeStyle)
+    
+    // 4. Fill Method (Creating a List filled with a repeated value)
+    val fillStyle = List.fill(5)(0)  // Creates a list with 5 elements, all 0
+    println("Fill Style: " + fillStyle)
+    
+    // 5. Tabulate Method (Using a function to generate a List)
+    val tabulateStyle = List.tabulate(5)(i => i * 2)  // Creates a list where each element is the index multiplied by 2
+    println("Tabulate Style: " + tabulateStyle)
+  }
+}
+
+21.//list merge
+object ListMergeDemo {
+  def main(args: Array[String]): Unit = {
+    
+    // Create two lists
+    val list1 = List(1, 3, 5, 7, 9)
+    val list2 = List(2, 4, 6, 8, 10)
+    
+    // 1. Merge the lists using ++ operator
+    val mergedList = list1 ++ list2
+    println("Merged List: " + mergedList)
+    
+    // 2. Merge the lists using concat method
+    val mergedListConcat = list1.concat(list2)
+    println("Merged List using concat: " + mergedListConcat)
+    
+    // 3. Merge the lists using flatten method (only works with lists of lists)
+    val mergedListFlatten = List(list1, list2).flatten
+    println("Merged List using flatten: " + mergedListFlatten)
+    
+    // Sort the merged list in ascending order
+    val ascendingList = mergedList.sorted
+    println("Merged List in Ascending Order: " + ascendingList)
+    
+    // Sort the merged list in descending order
+    val descendingList = mergedList.sorted.reverse
+    println("Merged List in Descending Order: " + descendingList)
+  }
+}
+
+22.//two mutable set comman element
+import scala.collection.mutable
+
+object MutableSetDemo {
+  def main(args: Array[String]): Unit = {
+
+    // 1. Creating mutable sets using different methods
+    // Method 1: Using the mutable.Set.apply
+    val set1 = mutable.Set(1, 3, 5, 7, 9)
+
+    // Method 2: Using the += operator
+    val set2 = mutable.Set[Int]()
+    set2 += 2
+    set2 += 4
+    set2 += 6
+    set2 += 8
+    set2 += 10
+
+    println("Set 1: " + set1)
+    println("Set 2: " + set2)
+
+    // 2. Finding common elements (intersection) between set1 and set2
+    val commonElements = set1.intersect(set2)
+    println("Common Elements between Set 1 and Set 2: " + commonElements)
+
+    // 3. Adding elements to the sets using the `add` method
+    set1.add(11)  // Adding to set1
+    set2.add(12)  // Adding to set2
+
+    println("Set 1 after adding 11: " + set1)
+    println("Set 2 after adding 12: " + set2)
+
+    // Adding multiple elements to a set at once using `++=` operator
+    set1 ++= Set(13, 15)  // Adding multiple elements to set1
+    set2 ++= Set(14, 16)  // Adding multiple elements to set2
+
+    println("Set 1 after adding 13, 15: " + set1)
+    println("Set 2 after adding 14, 16: " + set2)
+  }
+}
+
+23.//Map() source collection
+import Scala.io.StdIn.{readline}
+
+object Helloworld {
+def lowerToUpper(ch: Char): Char 
+{ 
+if (ch. is Lower) return (ch.toByte-32).tochar= 
+else
+
+return ch
+
+def main (args: Arroy [string]) { 
+println("Enter a Str String")
+
+var Str1= read Line
+
+var str2 = Str1. map (lowerToUpper) 
+println("Result String is: ", +str2)
+
+
+
+
+
