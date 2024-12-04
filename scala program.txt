@@ -1,0 +1,824 @@
+1.perfect number in scala
+
+import scala.io.StdIn._
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the value of n")
+        val n = readInt()
+        var perfectNumbers = Array[Int]()
+
+        for (j <- 1 to n) {
+            var sum = 0
+            for (i <- 1 until j) {
+                if (j % i == 0) {
+                    sum += i
+                }
+            }
+            if (j == sum) {		
+                perfectNumbers = perfectNumbers :+ j
+            }
+        
+
+        println("Perfect numbers up to " + n + ": " + perfectNumbers.mkString(", "))
+    }
+}
+
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+     
+     println("enter the number")
+     var n=readInt()
+     var sum=0
+     for(i<-1 until n)
+     {
+         if(n%i==0)
+         {
+             sum=sum+i
+         }
+     }
+     if(sum==n)
+     {
+         println("number is perfect")
+         
+     }
+     else
+     {
+         println("not")
+     }
+       
+    }
+}
+
+
+2.max of 3 number
+
+
+import scala.io.StdIn.{readInt}
+object HelloWorld{
+    def main(args:Array[String]):Unit=
+    {
+        println("Enter Three Number to check Maximum ")
+        var a=readInt
+        var b=readInt   
+        var c= readInt
+        var max = if (a > b && a > c) a else if (b > a && b > c) b else c
+
+        
+        println(" Maximum Number between three is:"+max);
+        
+    }
+}
+
+3.divisible by 3 and 6
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter number of elements in the array")
+        val n1 = readInt()
+        val arr = new Array[Int](n1)
+        
+        println("Enter elements in the array")
+        for (i <- 0 until n1) {
+            arr(i) = readInt()
+        }
+        
+        val result = arr.filter(x => x % 3 == 0 && x % 6 == 0)		
+        println("Elements divisible by both 3 and 6:")
+        for (i <- result) {
+            print(i + " ")
+        }
+    }
+}
+
+4.intersection element
+
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the number of elements in the first array")
+        val n1 = readInt()
+        val arr1 = new Array[Int](n1)
+        println("Enter elements in the first array")
+        for (i <- 0 until n1) {
+            arr1(i) = readInt()
+        }
+
+        println("Enter the number of elements in the second array")
+        val n2 = readInt()
+        val arr2 = new Array[Int](n2)
+        println("Enter elements in the second array")
+        for (i <- 0 until n2) {
+            arr2(i) = readInt()
+        }
+
+        val intersection = arr1.intersect(arr2)
+        println("Intersection of the two arrays: " + intersection.mkString(", "))
+    }
+}
+
+5.armstrong
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the value of n")
+        var n = readInt()
+        var originalNumber = n
+        var sum = 0
+
+        while (n != 0) {
+            var rem = n % 10
+            sum += rem * rem * rem
+            n /= 10
+        }
+
+        if (originalNumber == sum) {
+            println("number is armstrong")
+        } else {
+            println("number is not armstrong")
+        }
+    }
+}
+6.prime 
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        var n = 7
+        var count = 0
+        
+        for (i <- 1 to n) {
+            if (n % i == 0) {
+                count += 1  //to: Includes the end value.
+
+//until: Excludes the end value.
+            }
+        }
+        
+        if (count == 2) {
+            println("number is prime")
+        } else {
+            println("not prime")
+        }
+    }
+ 
+7.Transpose of matrix
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the row and column")
+        val r = readInt()
+        val c = readInt()
+        val arr = Array.ofDim[Int](r, c)
+        
+        println("Enter the matrix elements")
+        for (i <- 0 until r) {
+            for (j <- 0 until c) {
+                arr(i)(j) = readInt()
+            }
+        }
+        
+        println("Original matrix:")
+        for (i <- 0 until r) {
+            for (j <- 0 until c) {
+                print(arr(i)(j) + "\t")
+            }
+            println()
+        }
+        
+        println("Transposed matrix:")
+        for (i <- 0 until c) {
+            for (j <- 0 until r) {
+                print(arr(j)(i) + "\t")
+            }
+            println()
+        }
+    }
+}
+
+
+8.Addition of two matrix 
+
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the number of rows and columns for the matrices")
+        val rows = readInt()
+        val cols = readInt()
+
+        val matrix1 = Array.ofDim[Int](rows, cols)
+        val matrix2 = Array.ofDim[Int](rows, cols)
+        val resultMatrix = Array.ofDim[Int](rows, cols)
+
+        println("Enter elements of the first matrix")
+        for (i <- 0 until rows) {
+            for (j <- 0 until cols) {
+                matrix1(i)(j) = readInt()
+            }
+        }
+
+        println("Enter elements of the second matrix")
+        for (i <- 0 until rows) {
+            for (j <- 0 until cols) {
+                matrix2(i)(j) = readInt()
+            }
+        }
+
+        // Adding the two matrices
+        for (i <- 0 until rows) {
+            for (j <- 0 until cols) {
+                resultMatrix(i)(j) = matrix1(i)(j) + matrix2(i)(j)
+            }
+        }
+
+        println("Resultant matrix after addition:")
+        for (i <- 0 until rows) {
+            for (j <- 0 until cols) {
+                print(resultMatrix(i)(j) + "\t")
+            }
+            println()
+        }
+    }
+}
+
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+     println("how many element in 1 array ")
+     var n1=readInt()
+     var arr1=new Array[Int](n1)
+     println("Enter the element in first array:")
+     for(i<-0 until n1)
+     {
+         arr1(i)=readInt()
+         
+     }
+     println("first arrray element")
+     for(i<-0 until n1)
+     {
+         println(arr1(i)+"\t")
+     }
+      println("how many element in 2 array ")
+     var n2=readInt()
+     var arr2=new Array[Int](n2)
+     println("Enter the element in second array:")
+     for(i<-0 until n2)
+     {
+         arr2(i)=readInt()
+         
+     }
+     println("second arrray element")
+     for(i<-0 until n2)
+     {
+         println(arr2(i)+"\t")
+     }
+     var intesection=arr1.intersect(arr2)
+     println("intersection of two array:"+ intesection.mkString(" , "))
+}
+}
+
+
+ 9.decimal to binary 
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the decimal numnber")
+        val n=readInt
+        val binary=n.toBinaryString
+        println(s"Binary representation of $n  is $binary")
+    }
+}
+
+10.decimal to hexadecimal
+
+import scala.io.StdIn.{readInt}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter the decimal numnber")
+        val n=readInt
+        val binary=n.toHexString.toUpperCase
+        println(s"Binary representation of $n  is $binary")
+    }
+}
+
+11.count uppercase character and convert into lowecase 
+
+import scala.io.StdIn.{readLine}
+
+object HelloWorld{
+    def main(args: Array[String]): Unit = {
+        println("Enter a string")
+        val inputString = readLine()
+        
+        val upperCaseCount = inputString.count(_.isUpper)
+        val newString = inputString.toLowerCase
+
+        println(s"Number of uppercase characters: $upperCaseCount")
+        println(s"New string: $newString")
+    }
+}
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+        println("Enter the string ")
+        val string=readLine()
+        println("ENter the chacter to be counted it occurances:")
+        val charcount=readChar()
+        val count=string.count(_== charcount)
+        println(count)
+        //println(s" the character '$charcount'  appers")
+        
+        
+    }
+}
+ 
+12.repaced of * @ ?
+
+import scala.io.StdIn.{readLine, readChar}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("Enter a string")
+        val inputString = readLine()
+        
+        println("Enter a character to count its occurrences")
+        val charToCount = readChar()
+        
+        val charCount = inputString.count(_ == charToCount)
+        
+        val newString = inputString.map { char =>
+            if (char.isDigit) {
+                '*'
+            } else if (char.isLetter) {
+                '?'
+            } else {
+                '@'
+            }
+        }
+
+        println(s"Number of occurrences of '$charToCount': $charCount")
+        println(s"New string: $newString" 
+
+)
+    }
+}
+ 
+
+define class studnent with appopirate constructor tostring and getter display name of student of given course
+ 
+13.// Define the Student class
+class Student(private var id: Int, private var name: String, private var course: String) {
+
+  // Getter methods
+  def getId: Int = id
+  def getName: String = name
+  def getCourse: String = course
+
+  // Setter methods
+  def setId(newId: Int): Unit = id = newId
+  def setName(newName: String): Unit = name = newName
+  def setCourse(newCourse: String): Unit = course = newCourse
+
+  // Override toString method
+  override def toString: String = s"Student(ID: $getId, Name: $getName, Course: $getCourse)"
+}
+
+object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    import scala.io.StdIn._
+
+    // Accept the number of students
+    print("Enter the number of students: ")
+    val n = readInt()
+
+    // Create a list to store students
+    val students = for (i <- 1 to n) yield {
+      println("Enter student details:")
+      print("ID: ")
+      val id = readInt()
+      print("Name: ")
+      val name = readLine()
+      print("Course: ")
+      val course = readLine()
+      new Student(id, name, course)
+    }
+
+    // Accept course to filter students
+    print("Enter course to filter students: ")
+    val courseToFind = readLine()
+
+    // Filter and display students in the given course
+    val filteredStudents = students.filter(_.getCourse == courseToFind)
+                                //student => student.getCourse same as _.getcourse
+    if (filteredStudents.nonEmpty) {
+      println(s"Students enrolled in $courseToFind:")
+      filteredStudents.foreach(student => println(student.getName))  //use only _.getName in foreach
+    } else {			
+      println(s"No students found in the course: $courseToFind")
+    }
+  }
+}
+
+
+14. 
+
+import scala.io.StdIn._
+
+class Account(val accno: Int, val name: String, var balance: Float) {
+    val minBalance: Float = 500.0f
+
+    def deposit(amount: Float): Unit = {
+        balance += amount
+        println(s"Deposited ${amount}. New balance: $$${balance}")
+    }
+
+    def withdraw(amount: Float): Unit = {
+        if (balance - amount >= minBalance) {
+            balance -= amount
+            println(s"Withdrew $$${amount}. New balance: $$${balance}")
+        } else {
+            println("Insufficient balance. Minimum balance must be maintained.")
+        }
+    }
+
+    def viewBalance(): Unit = {
+        println(s"Account Balance: $$${balance}")
+    }
+
+    override def toString: String = s"Account Number: $accno, Name: $name, Balance: $$${balance}"
+}
+
+object HelloWorld {
+    def main(args: Array[String]): Unit = {
+        println("How many accounts do you want to create?")
+        val n = readInt()
+        val accounts = Array.fill(n) {
+            println("Enter Account Holder Name:")
+            val name = readLine()
+            println("Enter Opening Balance:")
+            val balance = readFloat()
+            new Account(1000 + scala.util.Random.nextInt(9000), name, balance)
+        }
+
+        var exit = false
+        while (!exit) {
+            println("\n1: Deposit\n2: Withdraw\n3: View Balance\n4: Exit")
+            println("Enter your choice:")
+            val choice = readInt()
+
+            choice match {
+                case 4 =>
+                    exit = true
+                    println("Goodbye!")
+
+                case _ =>
+                    println("Enter Account Number:")
+                    val accno = readInt()
+                    accounts.find(_.accno == accno) match {
+                        case Some(account) =>
+                            choice match {
+                                case 1 =>
+                                    println("Enter amount to deposit:")
+                                    val amount = readFloat()
+                                    account.deposit(amount)
+
+                                case 2 =>
+                                    println("Enter amount to withdraw:")
+                                    val amount = readFloat()
+                                    account.withdraw(amount)
+
+                                case 3 =>
+                                    account.viewBalance()
+
+                                case _ =>
+                                    println("Invalid choice.")
+                            }
+                        case None =>
+                            println("Account not found.")
+                    }
+            }
+        }
+    }
+}
+
+15.
+shape 
+
+
+import scala.io.StdIn._
+  
+abstract class Shape(dim1:Float,dim2:Float,dim3:Float)
+{
+
+    def area():Float
+    def perimeter():Float
+    def volume():Float
+    final val pi=3.142f
+
+}
+class Circle (dim1:Float) extends Shape(dim1,0.0f,0.0f)
+{
+    def area:Float= pi*dim1*dim1
+    def perimeter:Float=2*pi*dim1
+    def volume:Float=0.0f
+
+}
+class Rectangle(dim1:Float,dim2:Float) extends Shape(dim1,dim2,0.0f)
+{
+
+     def area:Float= (dim1*dim2)
+    def perimeter:Float=2*(dim2+dim1)
+    def volume:Float=0.0f
+
+}
+
+class Cone(dim1:Float,dim2:Float,dim3:Float) extends Shape(dim1,dim2,dim3)
+{
+     def area:Float=pi*dim1* (dim1*dim3)// πr(r+l)
+    def perimeter:Float=0.0f
+    def volume:Float=0.33f*pi*dim1*dim1*dim2//  =>1/3 pi r^2h   
+}
+
+object HelloWorld{
+    def main(Args:Array[String])
+    {
+        println("Enter radius of circle:")
+        var r=readFloat
+        var c= new Circle(r)
+        println("Area of circle:"+c.area())
+        println("perimeter of circle:"+c.perimeter())
+
+        println("Enter Lengeth(width),breadth(height) of rectnagle")
+
+        var rec=new Rectangle(readFloat,readFloat)
+          println("Area of Rectangle:"+rec.area())
+        println("perimeter of perimeter:"+rec.perimeter())
+
+        println("Enter radius ,Height,length of cone:")
+        var cone= new Cone(readFloat,readFloat,readFloat)
+        println("Aread of Cone:"+cone.area())
+        println("Vloume of cone is:"+cone.volume())
+        
+
+
+    }
+
+}
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+        println("Enter the value n1")
+        val n1=readInt()
+        println("Enter the value n2")
+        val n2=readInt()
+        val avg=(n1+n2)/2
+        println("Average of two number : "+ avg)
+    }
+}
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+        println("Enter the number")
+        var n=readInt()
+         var temp=n
+        var rev=0
+        while (temp!=0){
+             var rem=temp%10
+            rev=rev*10+rem
+            temp=temp/10
+        }
+        println("original number:"+ n)
+        println("reverse number:"+rev)
+        
+        
+    }
+}
+
+
+
+import scala.io.StdIn._
+object HelloWorld
+{
+    def main(args:Array[String]):Unit={
+        println("Enter the number:")
+        var n=readInt()
+        var temp=n
+        var arm=0
+        while(temp>0){
+            var rem=temp%10
+            arm=arm+(rem * rem * rem )
+            temp=temp/10            
+        }
+        println("original number:"+n)
+        println("armstrong number:"+arm)
+        if(arm==n)
+        {
+            println("number is armstrog")
+        }
+        else
+        {
+            println("number is not armstrong")
+        }
+        
+        
+        
+        
+    }
+}
+object UpperCase1{
+  def main(args:Array[String]):Unit ={
+  
+  def toUpperCase(c:Char):Char={
+    c.toUpper
+}
+val str="my name is asakrt" 
+  val upperStr=str.map(toUpperCase)
+  println(upperStr)
+}
+}
+
+object Sanket {
+  def main(args: Array[String]): Unit = {
+    // Creating a list using the :: operator
+    val list = 100 :: 200 :: 400 :: Nil
+    println(list)
+    
+    // Creating a list using the List() method
+    val list1 = List(100, 20, 30, 40)
+    println(list1)
+    
+    // Creating a list using the List.range() method
+    val list3 = List.range(1, 10)
+    println(list3)
+    val list4=list1.concat(list3)
+      println(list4)
+   var listy=list1.sortWith(_<_)
+    println(listy)
+   var set1=Set(1,2,4,5,6)
+   var set2=Set(4,6,7,3,4)
+   println(set1)
+   println(set2)
+  println("common element are:"+set1.intersect(set2))
+
+
+  }
+}
+
+import scala.io.StdIn._
+
+class Player(val pno: Int, val pname: String, val age: Int) {
+  override def toString: String = s"Player Number: $pno, Name: $pname, Age: $age"
+}
+
+class CricketPlayer(pno: Int, pname: String, age: Int, val battingAverage: Double)
+  extends Player(pno, pname, age) {
+  override def toString: String = super.toString + s", Batting Average: $battingAverage"
+}
+
+class FootballPlayer(pno: Int, pname: String, age: Int, val noOfGoals: Int)
+  extends Player(pno, pname, age) {
+  override def toString: String = super.toString + s", No. of Goals: $noOfGoals"
+}	
+
+object PlayerDetails {
+  def main(args: Array[String]): Unit = {	
+    println("Enter the number of players:")
+    val n = readInt()
+
+    val players = (1 to n).map { _ =>
+      println("Enter player type (1 for Cricket, 2 for Football):")
+      val playerType = readInt()
+
+      println("Enter player number:")
+      val pno = readInt()
+
+      println("Enter player name:")
+      val pname = readLine()
+
+      println("Enter player age:")
+      val age = readInt()
+
+      playerType match {
+        case 1 =>
+          println("Enter batting average:")
+          val battingAverage = readDouble()
+          new CricketPlayer(pno, pname, age, battingAverage)
+        case 2 =>
+          println("Enter no. of goals:")
+          val noOfGoals = readInt()
+          new FootballPlayer(pno, pname, age, noOfGoals)
+        case _ =>
+          println("Invalid player type")
+          new Player(pno, pname, age) // Placeholder for invalid input, could be improved
+      }
+    }
+
+    println("\nCricket players with batting average greater than 50:")
+    players.collect { case p: CricketPlayer if p.battingAverage > 50 => p }.foreach(println)
+
+    println("\nFootball players with more than 50 goals:")
+    players.collect { case p: FootballPlayer if p.noOfGoals > 50 => p }.foreach(println)
+  }
+}
+
+
+
+
+import scala.io.StdIn._
+
+class Account(var name: String, var balance: Float) {
+    
+  private val minBalance: Float = 500.0f
+
+  def deposit(amount: Float): Unit = {
+    balance += amount
+    println(s"Deposited ${amount}. Current balance: ${balance}.")
+  }
+
+  def withdraw(amount: Float): Unit = {
+    if (balance - amount >= minBalance) {
+      balance -= amount
+      println(s"Withdrew ${amount}. Current balance: ${balance}.")
+    } else {
+      println(s"Insufficient balance! Minimum balance of $$${minBalance} must be maintained.")
+    }
+  }
+
+  def viewBalance(): Unit = {
+    println(s"Current balance: $ {balance}.")
+  }
+}
+
+object HelloWorld {
+  def main(args: Array[String]): Unit = {
+    println("Enter your name:")
+    val name = readLine()
+    println("Enter opening balance:")
+    val openingBalance = readFloat()
+
+    val account = new Account(name, openingBalance)
+
+    var exit = false
+    while (!exit) {
+      println("\nMenu:")
+      println("1. Deposit")
+      println("2. Withdraw")
+      println("3. View Balance")
+      println("4. Exit")
+      print("Enter your choice: ")
+      val choice = readInt()
+
+      choice match {
+        case 1 =>
+          print("Enter amount to deposit: ")
+          val amount = readFloat()
+          account.deposit(amount)
+
+        case 2 =>
+          print("Enter amount to withdraw: ")
+          val amount = readFloat()
+          account.withdraw(amount)
+
+        case 3 =>
+          account.viewBalance()
+
+        case 4 =>
+          println("Exiting. Thank you!")
+          exit = true
+
+        case _ =>
+          println("Invalid choice. Please try again.")
+      }
+    }
+  }
+}
+
+
